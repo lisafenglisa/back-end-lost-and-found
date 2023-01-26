@@ -5,17 +5,17 @@ const {
   getAllItems,
   createItem,
   getItemById,
-  getItem,
+  // getItem,
   updateItem,
-  deleteItem,
+  deleteItemById,
 } = require("../controllers/items");
 
 router.route("/").get(getAllItems).post(createItem);
 router
   .route("/:id")
   .get(getItemById)
-  .get(getItem)
-  .patch(updateItem)
-  .delete(deleteItem);
+  // .get(getItem)
+  .put(updateItem)
+  .delete(deleteItemById);
 
 module.exports = router;

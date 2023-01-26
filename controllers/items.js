@@ -2,7 +2,6 @@ const client = require("../connection");
 
 // get all items
 const getAllItems = (req, res) => {
-  // res.send("get all items");
   client.query(`Select * from items`, (err, result) => {
     if (!err) {
       res.send(result.rows);
@@ -11,8 +10,20 @@ const getAllItems = (req, res) => {
   client.end;
 };
 
+// create an item
 const createItem = (req, res) => {
-  res.json(req.body);
+  const item = req.body;
+  let insertQuery = `insert into items(title, location, description, finder_name, email, phone)
+                    values('${item.title}', '${item.location}', '${item.description}', '${item.finder_name}', '${item.email}', '${item.phone}')`;
+
+  client.query(insertQuery, (err, result) => {
+    if (!err) {
+      res.send("Successfully created item");
+    } else {
+      console.log(err.message);
+    }
+  });
+  client.end;
 };
 
 // get item by id
@@ -28,16 +39,41 @@ const getItemById = (req, res) => {
   client.end;
 };
 
-const getItem = (req, res) => {
-  res.json({ id: req.params.id });
-};
+// const getItem = (req, res) => {
+//   res.json({ id: req.params.id });
+// };
 
+// update item details
 const updateItem = (req, res) => {
-  res.send("update item");
+  let item = req.body;
+  let updateQuery = `update items
+                    set title = '${item.title}',
+                    location = '${item.location}',
+                    description = '${item.description}',
+                    finder_name = '${item.finder_name}',
+                    email = '${item.email}',
+                    phone = '${item.phone}'`;
+  client.query(updateQuery, (err, result) => {
+    if (!err) {
+      res.send("Successfully updated item");
+    } else {
+      console.log(err.message);
+    }
+  });
+  client.end;
 };
 
-const deleteItem = (req, res) => {
-  res.send("delete item");
+const deleteItemById = (req, res) => {
+  let insertQuery = `delete from items where item_id=${req.params.id}`;
+
+  client.query(insertQuery, (err, result) => {
+    if (!err) {
+      res.send("Successfully deleted item");
+    } else {
+      console.log(err.message);
+    }
+  });
+  client.end;
 };
 
 client.connect();
@@ -46,7 +82,7 @@ module.exports = {
   getAllItems,
   createItem,
   getItemById,
-  getItem,
+  // getItem,
   updateItem,
-  deleteItem,
+  deleteItemById,
 };
