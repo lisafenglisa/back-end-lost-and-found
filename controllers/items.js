@@ -13,8 +13,8 @@ const getAllItems = (req, res) => {
 // create an item
 const createItem = (req, res) => {
   const item = req.body;
-  let insertQuery = `insert into items(title, location, description, finder_name, email, phone)
-                    values('${item.title}', '${item.location}', '${item.description}', '${item.finder_name}', '${item.email}', '${item.phone}')`;
+  let insertQuery = `insert into items(title, category, location, description, finder_name, email, phone)
+                    values('${item.title}', '${item.category}', '${item.location}', '${item.description}', '${item.finder_name}', '${item.email}', '${item.phone}')`;
 
   client.query(insertQuery, (err, result) => {
     if (!err) {
@@ -39,10 +39,6 @@ const getItemById = (req, res) => {
   client.end;
 };
 
-// const getItem = (req, res) => {
-//   res.json({ id: req.params.id });
-// };
-
 // update item details
 const updateItem = (req, res) => {
   let item = req.body;
@@ -52,7 +48,8 @@ const updateItem = (req, res) => {
                     description = '${item.description}',
                     finder_name = '${item.finder_name}',
                     email = '${item.email}',
-                    phone = '${item.phone}'`;
+                    phone = '${item.phone}'
+                    where item_id=${req.params.id}`;
   client.query(updateQuery, (err, result) => {
     if (!err) {
       res.send("Successfully updated item");
