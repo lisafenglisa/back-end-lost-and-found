@@ -13,6 +13,7 @@ const getAllItems = (req, res) => {
 // create an item
 const createItem = (req, res) => {
   const item = req.body;
+  console.log(item);
   let insertQuery = `insert into items(title, category, location, description, finder_name, email, phone)
                     values('${item.title}', '${item.category}', '${item.location}', '${item.description}', '${item.finder_name}', '${item.email}', '${item.phone}')`;
 
@@ -24,6 +25,14 @@ const createItem = (req, res) => {
     }
   });
   client.end;
+};
+
+// upload file
+const uploadFile = (req, res) => {
+  setTimeout(() => {
+    console.log("file uploaded");
+    return res.status(200).json({ result: true, msg: "file uploaded" });
+  }, 3000);
 };
 
 // get item by id
@@ -79,7 +88,7 @@ module.exports = {
   getAllItems,
   createItem,
   getItemById,
-  // getItem,
   updateItem,
   deleteItemById,
+  uploadFile,
 };
