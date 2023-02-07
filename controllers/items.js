@@ -14,8 +14,8 @@ const getAllItems = (req, res) => {
 const createItem = (req, res) => {
   const item = req.body;
   console.log(item);
-  let insertQuery = `insert into items(title, category, location, description, finder_name, email, phone)
-                    values('${item.title}', '${item.category}', '${item.location}', '${item.description}', '${item.finder_name}', '${item.email}', '${item.phone}')`;
+  let insertQuery = `insert into items(title, category, location, description, finder_name, email, phone, date)
+                    values('${item.title}', '${item.category}', '${item.location}', '${item.description}', '${item.finder_name}', '${item.email}', '${item.phone}','${item.date}')`;
 
   client.query(insertQuery, (err, result) => {
     if (!err) {

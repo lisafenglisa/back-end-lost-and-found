@@ -1,0 +1,9 @@
+{
+  "dev": {
+    "driver": "pg",
+    "user": "postgres",
+    "password": "Y19870804f!",
+    "host": "localhost",
+    "database": "lost_and_found_development"
+  }
+}
