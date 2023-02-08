@@ -15,7 +15,7 @@ const client = new Client({
   port: 5432,
   password: process.env.PASSWORD,
   database: process.env.DATABASE,
-  uri: process.env.DATABASE_URL,
+  connectionString: process.env.DATABASE_URL,
   ssl: {
     rejectUnauthorized: false,
   },
