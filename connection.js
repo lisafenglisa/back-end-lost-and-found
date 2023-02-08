@@ -15,7 +15,9 @@ const client = new Client({
   port: 5432,
   password: process.env.PASSWORD,
   database: process.env.DATABASE,
-  ssl: true,
+  ssl: {
+    rejectUnauthorized: false,
+  },
 });
 
 module.exports = client;
