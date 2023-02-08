@@ -1,9 +1,9 @@
 const express = require("express");
 const app = express();
-const port = 3000;
+// const port = 3000;
 const items = require("./routes/items");
 const cors = require("cors");
-// const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3000;
 // const multer = require("multer");
 // const fileUpload = require("express-fileupload");
 
@@ -24,6 +24,6 @@ app.get("/", (req, res) => {
 
 app.use("/api/v1/items", items);
 
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`);
+app.listen(PORT, () => {
+  console.log(`Example app listening on port ${PORT}`);
 });
