@@ -1,9 +1,9 @@
 {
   "dev": {
     "driver": "pg",
-    "user": "txgfnseiwfrkkt",
-    "password": "5a96914fdc073e19fc4b99f8c28a585c3eba69e22bc47b6e5f3a403ca8f42e11",
-    "host": "ec2-23-20-224-166.compute-1.amazonaws.com",
-    "database": "d1efkh36voj28b"
+    "user": "postgres",
+    "password": "Y19870804f!",
+    "host": "process.env.HOST",
+    "database": "lost_and_found_development"
   }
 }
