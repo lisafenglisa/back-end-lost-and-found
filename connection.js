@@ -16,9 +16,16 @@ const client = new Client({
   password: process.env.PASSWORD,
   database: process.env.DATABASE,
   connectionString: process.env.DATABASE_URL,
-  ssl: {
-    rejectUnauthorized: false,
+  ssl: true,
+  dialectOptions: {
+    ssl: {
+      require: true,
+      rejectUnauthorized: false,
+    },
   },
+  // ssl: {
+  //   rejectUnauthorized: false,
+  // },
 });
 
 module.exports = client;
