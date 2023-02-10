@@ -1,5 +1,3 @@
-/* Replace with your SQL commands */
-
 -- Table: public.items
 
 -- DROP TABLE IF EXISTS public.items;
@@ -15,6 +13,7 @@ CREATE TABLE IF NOT EXISTS public.items
     email text COLLATE pg_catalog."default",
     phone text COLLATE pg_catalog."default",
     date text COLLATE pg_catalog."default",
+    image_url text COLLATE pg_catalog."default",
     CONSTRAINT items_pkey PRIMARY KEY (item_id)
 )
 
@@ -22,10 +21,3 @@ TABLESPACE pg_default;
 
 ALTER TABLE IF EXISTS public.items
     OWNER to postgres;
-
--- Column: public.items.image_url
-
--- ALTER TABLE IF EXISTS public.items DROP COLUMN IF EXISTS image_url;
-
-ALTER TABLE IF EXISTS public.items
-    ADD COLUMN image_url text COLLATE pg_catalog."default";
