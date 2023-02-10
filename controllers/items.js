@@ -1,3 +1,4 @@
+const { response } = require("express");
 const client = require("../connection");
 
 // get all items
@@ -14,8 +15,8 @@ const getAllItems = (req, res) => {
 const createItem = (req, res) => {
   const item = req.body;
   console.log(item);
-  let insertQuery = `insert into items(title, category, location, description, finder_name, email, phone, date)
-                    values('${item.title}', '${item.category}', '${item.location}', '${item.description}', '${item.finder_name}', '${item.email}', '${item.phone}','${item.date}')`;
+  let insertQuery = `insert into items(title, category, location, description, finder_name, email, phone, date, image_url)
+                    values('${item.title}', '${item.category}', '${item.location}', '${item.description}', '${item.finder_name}', '${item.email}', '${item.phone}','${item.date}', '${item.image_url}')`;
 
   client.query(insertQuery, (err, result) => {
     if (!err) {
@@ -25,14 +26,6 @@ const createItem = (req, res) => {
     }
   });
   client.end;
-};
-
-// upload file
-const uploadFile = (req, res) => {
-  setTimeout(() => {
-    console.log("file uploaded");
-    return res.status(200).json({ result: true, msg: "file uploaded" });
-  }, 3000);
 };
 
 // get item by id
@@ -90,5 +83,4 @@ module.exports = {
   getItemById,
   updateItem,
   deleteItemById,
-  uploadFile,
 };
